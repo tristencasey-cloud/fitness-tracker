@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+# vite-plugin-pwa writes its dev service worker here
+dev-dist/
+
+# Test coverage
+coverage/
+
+# Env files and local overrides
+.env
+.env.*
+!.env.example
+*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code: keep skills and shared settings, ignore personal overrides
+.claude/settings.local.json
