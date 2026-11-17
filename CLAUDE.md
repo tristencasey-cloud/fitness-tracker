@@ -65,19 +65,24 @@ Colors, fonts, spacing, and motion come only from tokens.css. No hardcoded value
 ## Status
 Update this after every step: what's done, what's next, known issues.
 - [x] Step 0: Environment and repo
-- [ ] Step 1: Scaffold, deploy, iPhone install
+- [ ] Step 1: Scaffold, deploy, iPhone install (code done and pushed; waiting on Pages setup and the iPhone install check)
 - [ ] Step 2: Data layer
 - [ ] Step 3: Library, routines, splits
 - [ ] Step 4: Workout logging
 - [ ] Step 5: History and backup
 
-Next: Step 1.
+Next: finish Step 1 checks on the iPhone, then Step 2.
 
 Notes:
-- Development runs in Claude Code cloud sessions (Linux container), not on the Surface. The container is wiped when a session ends, so every step ends with a push or the work is lost. There's no Browser pane here; check UI with headless Chromium at 390x844. The iPhone can't reach a cloud dev server, so phone testing happens on the deployed Pages site.
-- Context7 is not set up (declined).
+- Development runs in Claude Code cloud sessions (Linux container), not on the Surface. The container is wiped when a session ends, so every step ends with a push or the work is lost. There's no Browser pane here; check UI with headless Chromium at 390x844 against `npx vite preview` (Chromium doesn't emulate safe areas, so override --safe-top: 59px and --safe-bottom: 34px when screenshotting). The iPhone can't reach a cloud dev server, so phone testing happens on the deployed Pages site.
+- Context7 is not set up (declined). Versions here are newer than training data (React 19.3, React Router 8, TypeScript 7, Vite 8, vite-plugin-pwa 2, Vitest 5, Dexie 4.4). Read the installed .d.ts files in node_modules before using an API you're unsure of.
+- Linting is oxlint (Vite's template default now), not ESLint. `.oxlintrc.json` makes `any` an error. It prints nothing when clean.
 - Commits use the GitHub noreply email because the repo is public.
-- The frontend-design skill referenced in Step 1 isn't installed yet.
+- Design direction (chosen in Step 1): plate blue (#2e5bff, current set and main actions) + plate yellow (#ffd60a, PRs and finishing) as solid blocks on true black. Archivo variable font: width 62% black weight with tabular figures for numbers, normal width for text. Square corners. All of it lives in src/styles/tokens.css.
+- Component styles are CSS Modules (`*.module.css`) next to each component. Icons are imported one file at a time from `@phosphor-icons/react/dist/csr/<Name>`, sized with --icon-* tokens.
+- App icon: public/icon.svg (loaded bar end). After editing it, run `npm run icons` and commit the PNGs.
+- Settings shows the build's git SHA and has "Check for updates". The app also checks for a new version every time it comes back to the foreground (src/pwa/updates.ts).
+- `passWithNoTests` is on in vite.config.ts until Step 2 adds the first tests. Remove it then.
 - Open questions to settle before Step 2: PR rule for weights never used before (proposed: a set is a PR only if no earlier working set matched or beat it on both weight and reps), whether sets without completedAt count toward stats (proposed: no), and whether nextUpRoutine should skip empty workouts and ones from other splits (proposed: yes).
 
 Known issues: none yet
