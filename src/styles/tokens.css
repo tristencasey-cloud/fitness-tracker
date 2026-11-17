@@ -1,0 +1,132 @@
+/*
+  Design tokens. Every color, font, size, and duration in the app comes from here.
+
+  Direction: competition plates. Plate blue (20 kg) marks what you're doing now
+  and the main action. Plate yellow (15 kg) marks wins: PRs and finishing.
+  Both are used as solid blocks on true black. Numbers are the biggest thing
+  on screen, set in Archivo squeezed to its narrowest width.
+
+  vite.config.ts reads --color-bg from this file for the manifest and
+  theme-color meta tag, so keep it a plain hex value.
+*/
+
+:root {
+  /* ---------- Color ---------- */
+  --color-bg: #000000;
+  --color-surface: #141414;        /* raised rows, sheets */
+  --color-surface-strong: #202020; /* pressed state on surface, steppers */
+  --color-line: #2a2a2a;           /* dividers, outlines */
+  --color-line-strong: #3d3d3d;    /* empty check boxes, dashed "add" targets */
+
+  --color-text: #ffffff;
+  --color-text-dim: #b8b8b8;       /* secondary text, 10:1 on black */
+  --color-text-faint: #8c8c8c;     /* tertiary, still 6:1 on black. Never below 15px. */
+
+  /* Accent 1: plate blue. Current set, primary buttons, active tab.
+     Use as a block or large text (24px+); small blue text on black is too dim. */
+  --color-accent: #2e5bff;
+  --color-accent-press: #2249d9;
+  --color-on-accent: #ffffff;
+  --color-on-accent-dim: rgb(255 255 255 / 0.75);
+
+  /* Accent 2: plate yellow. PR badges, Finish, the finish screen. */
+  --color-win: #ffd60a;
+  --color-win-press: #e6c000;
+  --color-on-win: #000000;
+
+  --color-focus: var(--color-win);
+
+  /* ---------- Type ---------- */
+  --font: 'Archivo', ui-sans-serif, sans-serif;
+
+  /* Archivo has a width axis. Numbers and screen titles use it squeezed;
+     everything else is normal width. */
+  --width-numbers: 62%;
+  --width-text: 100%;
+
+  --weight-regular: 420;
+  --weight-medium: 520;
+  --weight-semibold: 620;
+  --weight-bold: 760;
+  --weight-black: 900;
+
+  /* Numbers (squeezed, black weight, tabular) */
+  --num-hero: 5.5rem;   /* 88px: finish screen totals */
+  --num-xl: 3.625rem;   /* 58px: weight and reps in set rows */
+  --num-title: 3rem;    /* 48px: screen titles. Stays under --num-xl so numbers win. */
+  --num-l: 2.5rem;      /* 40px: workout timer */
+  --num-m: 1.75rem;     /* 28px: summary stats */
+
+  /* Text (normal width) */
+  --text-xl: 1.5rem;     /* 24px: exercise names */
+  --text-l: 1.25rem;     /* 20px: buttons */
+  --text-m: 1.0625rem;   /* 17px: body, matches iOS body size */
+  --text-s: 0.9375rem;   /* 15px: secondary lines. Smallest text in content. */
+  --text-xs: 0.8125rem;  /* 13px: tab bar labels only */
+
+  --leading-numbers: 0.9;
+  --leading-tight: 1.15;
+  --leading-body: 1.4;
+
+  --tracking-numbers: -0.02em;
+  --tracking-tight: -0.01em;
+
+  /* ---------- Space (4px grid) ---------- */
+  --space-1: 0.25rem;  /* 4 */
+  --space-2: 0.5rem;   /* 8 */
+  --space-3: 0.75rem;  /* 12 */
+  --space-4: 1rem;     /* 16 */
+  --space-5: 1.25rem;  /* 20 */
+  --space-6: 1.5rem;   /* 24 */
+  --space-8: 2rem;     /* 32 */
+  --space-10: 2.5rem;  /* 40 */
+  --space-12: 3rem;    /* 48 */
+
+  --gutter: var(--space-5);  /* left/right page padding */
+
+  /* ---------- Sizes ---------- */
+  --touch-min: 48px;    /* smallest tappable thing */
+  --touch-l: 56px;      /* steppers, check boxes */
+  --touch-xl: 64px;     /* primary buttons */
+  --tabbar-height: 64px;
+  --icon-s: 20px;
+  --icon-m: 26px;
+  --icon-l: 32px;
+  --border-thick: 3px;
+  --border-thin: 1px;
+
+  /* Blocks are square-cornered on purpose: solid slabs, not cards. */
+  --radius: 0px;
+
+  /* ---------- Safe areas (notch, status bar, home indicator) ---------- */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* ---------- Motion ---------- */
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.1, 1);    /* fast start, firm stop */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-punch: cubic-bezier(0.34, 1.56, 0.64, 1); /* slight overshoot, for PR/finish moments */
+  --dur-instant: 80ms;   /* press feedback */
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 360ms;
+  --dur-moment: 640ms;   /* PR and finish */
+
+  /* ---------- Layers ---------- */
+  --z-content: 0;
+  --z-statusbar: 10;
+  --z-tabbar: 20;
+  --z-updatebar: 30;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-instant: 0ms;
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+    --dur-moment: 0ms;
+  }
+}
