@@ -1,0 +1,20 @@
+.shell {
+  min-height: 100dvh;
+}
+
+.statusScrim {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--safe-top);
+  background: var(--color-bg);
+  z-index: var(--z-statusbar);
+}
+
+/* Screens handle their own left/right gutter so blocks can run edge to edge.
+   This only keeps content clear of the notch, status bar, and tab bar. */
+.main {
+  padding-top: var(--safe-top);
+  padding-right: var(--safe-right);
+  padding-bottom: calc(var(--tabbar-height) + var(--safe-bottom) + var(--space-8));
+  padding-left: var(--safe-left);
+}

@@ -1,0 +1,56 @@
+/* Shared layout for top-level screens. */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--gutter);
+}
+
+.empty {
+  max-width: 32ch;
+  color: var(--color-text-dim);
+  font-size: var(--text-m);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+}
+
+.rows {
+  border-top: var(--border-thin) solid var(--color-line);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--touch-l);
+  border-bottom: var(--border-thin) solid var(--color-line);
+}
+
+.rowLabel {
+  color: var(--color-text-dim);
+}
+
+.rowValue {
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.note {
+  min-height: calc(var(--text-s) * var(--leading-body));
+  color: var(--color-text-dim);
+  font-size: var(--text-s);
+}
