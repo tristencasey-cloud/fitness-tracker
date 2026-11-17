@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!--
+    App icon: the end of a loaded barbell, seen from the side.
+    Plate colors match the accent and win colors in src/styles/tokens.css.
+    SVG can't read CSS variables, so if those tokens change, change these too.
+    (XML comments can't contain two hyphens in a row, so token names aren't
+    spelled out here.)
+    scripts/generate-icons.mjs shrinks the group with id "art" to build the
+    maskable version, so keep that id.
+  -->
+  <rect width="512" height="512" fill="#000000"/>
+  <!-- Shaft stays outside the art group so it always runs off the left edge. -->
+  <rect x="-20" y="243" width="170" height="26" fill="#8c8c8c"/>
+  <g id="art">
+    <!-- collar (inside stop) -->
+    <rect x="120" y="196" width="30" height="120" rx="4" fill="#a6a6a6"/>
+    <!-- sleeve -->
+    <rect x="150" y="230" width="320" height="52" rx="6" fill="#8c8c8c"/>
+    <!-- plates: blue 20, yellow 15, white 5 -->
+    <rect x="160" y="66" width="76" height="380" rx="8" fill="#2e5bff"/>
+    <rect x="244" y="111" width="62" height="290" rx="8" fill="#ffd60a"/>
+    <rect x="314" y="158" width="40" height="196" rx="7" fill="#f2f2f2"/>
+    <!-- clamp -->
+    <rect x="362" y="210" width="30" height="92" rx="4" fill="#a6a6a6"/>
+  </g>
+</svg>
